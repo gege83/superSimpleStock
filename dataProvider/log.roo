@@ -16,3 +16,33 @@ finder add --finderName findByStockSymbolAndCreationDateGraterThan
 // Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-02-28 18:33:15
 service all --interfacePackage com.gergo.takacs.dataprovider
 test integration --entity ~.TradeEntity
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-02-28 22:20:34
+hint
+perform tests
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-02-28 22:25:48
+entity jpa --class com.gergo.takacs.stock.StockEntity --abstract true --activeRecord false --equals 0
+focus --class com.gergo.takacs.stock.dataprovider.StockEntity
+dependency add --artifactId StockInterface --groupId com.gergo.takacs --version 0.0.1-SNAPSHOT
+field string --fieldName symbol --sizeMin 2
+field number --fieldName tickerPrice --type double --min 0
+field enum --fieldName type --type com.gergo.takacs.stock.StockType
+entity jpa --class com.gergo.takacs.stock.dataprovider.CommonStockEntity --extends com.gergo.takacs.stock.dataprovider.StockEntity --activeRecord false --equals true
+field number --fieldName lastDividend --type double
+entity jpa --class com.gergo.takacs.stock.dataprovider.PreferredStockEntity --extends com.gergo.takacs.stock.dataprovider.StockEntity --activeRecord false --equals true
+field number --fieldName fixedDividend --type float
+field number --fieldName parValue --type double
+repository jpa --interface com.gergo.takacs.stock.dataprovider.StockRepository --entity com.gergo.takacs.stock.dataprovider.StockEntity
+service type --interface com.gergo.takacs.stock.dataprovider.StockEntity
+service type --interface com.gergo.takacs.stock.dataprovider.StockEntityService
+test integration 
+// [failed] test integration --entity com.gergo.takacs.stock.dataprovider.StockEntity
+repository jpa --interface com.gergo.takacs.stock.dataprovider.CommonStockRepository
+service type --interface com.gergo.takacs.stock.dataprovider.CommonStockEntityService
+test integration --entity com.gergo.takacs.stock.dataprovider.CommonStockEntity
+repository jpa --interface com.gergo.takacs.stock.dataprovider.PreferredStockRepository
+service type --interface com.gergo.takacs.stock.dataprovider.PreferredStockEntityService
+test integration --entity com.gergo.takacs.stock.dataprovider.PreferredStockEntity
+// [failed] test integration --entity com.gergo.takacs.stock.dataprovider.StockEntity
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log closed at 2016-02-29 00:27:33
+exit
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log closed at 2016-02-29 00:27:43

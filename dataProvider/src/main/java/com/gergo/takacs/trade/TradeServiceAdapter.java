@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gergo.takacs.dataprovider.TradeEntity;
-import com.gergo.takacs.dataprovider.TradeEntityService;
+import com.gergo.takacs.trade.dataprovider.TradeEntity;
+import com.gergo.takacs.trade.dataprovider.TradeEntityService;
 
 @Service
 public class TradeServiceAdapter implements TradeService {

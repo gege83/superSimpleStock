@@ -3,9 +3,11 @@ package com.gergo.takacs.trade;
 import java.util.Date;
 
 import org.joda.time.DateTime;
+import org.springframework.stereotype.Component;
 
-import com.gergo.takacs.dataprovider.TradeEntity;
+import com.gergo.takacs.trade.dataprovider.TradeEntity;
 
+@Component
 public class TradeConverter {
 	public Trade convert(TradeEntity source) {
 		DateTime creationTime = null;

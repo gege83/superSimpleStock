@@ -14,8 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.gergo.takacs.dataprovider.TradeEntity;
-import com.gergo.takacs.dataprovider.TradeEntityService;
+import com.gergo.takacs.trade.dataprovider.TradeEntity;
+import com.gergo.takacs.trade.dataprovider.TradeEntityService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TradeServiceAdapterTest {

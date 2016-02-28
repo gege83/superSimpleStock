@@ -9,7 +9,7 @@
 	<description>this is the project partent pom</description>
 	<modules>
 		<module>TradeInterface</module>
-		<module>TradeDataProvider</module>
+		<module>StockInterface</module>
 		<module>dataProvider</module>
 	</modules>
 	<properties>

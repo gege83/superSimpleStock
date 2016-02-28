@@ -8,7 +8,7 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.gergo.takacs.dataprovider.TradeEntity;
+import com.gergo.takacs.trade.dataprovider.TradeEntity;
 
 public class TradeConverterTest {
 
