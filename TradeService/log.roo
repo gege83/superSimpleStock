@@ -1,0 +1,4 @@
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-02-27 09:16:50
+hint
+project --topLevelPackage com.gergo.takacs.trade --java 8 --parent com.gergo.takacs:supersimplestock:0.0.1-SNAPSHOT --projectName TradeService --packaging JAR
+hint
