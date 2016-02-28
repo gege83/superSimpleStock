@@ -1,0 +1,18 @@
+// Spring Roo 1.3.2.RELEASE [rev 8387857] log opened at 2016-02-28 18:09:50
+project --topLevelPackage com.gergo.takacs.dataProvider --java 7 --parent com.gergo.takacs:superSimpleStock:0.0.1-SNAPSHOT --projectName dataProvider --packaging jar
+jpa setup --database H2_IN_MEMORY --provider HIBERNATE 
+dependency add --artifactId TradeInterface --groupId com.gergo.takacs --version 0.0.1-SNAPSHOT
+entity jpa --class com.gergo.takacs.dataprovider.TradeEntity
+field date --type java.util.Date --fieldName creationDate --notNull 
+field enum --type com.gergo.takacs.trade.TradeDirection --fieldName direction
+field number --fieldName quantity --type int --min 1
+field number --fieldName price --type double --min 0
+field string --fieldName stockSymbol --notNull --sizeMin 2
+repository jpa --interface ~.TradeRepository --entity ~.TradeEntity
+focus --class ~.TradeRepository
+finder add --finderName findByStockSymbolAndCreationDateGraterThan
+focus --class ~.TradeEntity
+finder add --finderName findByStockSymbolAndCreationDateGraterThan
+// Spring Roo 1.3.1.RC1 [rev 4877cfb] log opened at 2016-02-28 18:33:15
+service all --interfacePackage com.gergo.takacs.dataprovider
+test integration --entity ~.TradeEntity
