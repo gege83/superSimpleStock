@@ -1,7 +1,6 @@
 package com.gergo.takacs.stock.dataprovider;
 
 import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
@@ -13,8 +12,6 @@ import org.springframework.roo.addon.equals.RooEquals;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.entity.RooJpaEntity;
 import org.springframework.roo.addon.tostring.RooToString;
-
-import com.gergo.takacs.stock.StockType;
 
 @RooJavaBean
 @RooToString
@@ -34,9 +31,4 @@ public abstract class StockEntity {
 	 */
 	@Min(0L)
 	private double tickerPrice;
-
-	/**
-	 */
-	@Enumerated
-	private StockType type;
 }

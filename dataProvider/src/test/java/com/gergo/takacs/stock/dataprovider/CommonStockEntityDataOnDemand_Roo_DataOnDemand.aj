@@ -3,7 +3,6 @@
 
 package com.gergo.takacs.stock.dataprovider;
 
-import com.gergo.takacs.stock.StockType;
 import com.gergo.takacs.stock.dataprovider.CommonStockEntity;
 import com.gergo.takacs.stock.dataprovider.CommonStockEntityDataOnDemand;
 import java.security.SecureRandom;
@@ -32,7 +31,6 @@ privileged aspect CommonStockEntityDataOnDemand_Roo_DataOnDemand {
         setLastDividend(obj, index);
         setSymbol(obj, index);
         setTickerPrice(obj, index);
-        setType(obj, index);
         return obj;
     }
     
@@ -49,11 +47,6 @@ privileged aspect CommonStockEntityDataOnDemand_Roo_DataOnDemand {
     public void CommonStockEntityDataOnDemand.setTickerPrice(CommonStockEntity obj, int index) {
         double tickerPrice = new Integer(index).doubleValue();
         obj.setTickerPrice(tickerPrice);
-    }
-    
-    public void CommonStockEntityDataOnDemand.setType(CommonStockEntity obj, int index) {
-        StockType type = StockType.class.getEnumConstants()[0];
-        obj.setType(type);
     }
     
     public CommonStockEntity CommonStockEntityDataOnDemand.getSpecificCommonStockEntity(int index) {

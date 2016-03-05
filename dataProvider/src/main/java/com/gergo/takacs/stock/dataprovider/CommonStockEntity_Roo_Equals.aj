@@ -17,11 +17,11 @@ privileged aspect CommonStockEntity_Roo_Equals {
             return true;
         }
         CommonStockEntity rhs = (CommonStockEntity) obj;
-        return new EqualsBuilder().append(id, rhs.id).append(lastDividend, rhs.lastDividend).append(symbol, rhs.symbol).append(tickerPrice, rhs.tickerPrice).append(type, rhs.type).isEquals();
+        return new EqualsBuilder().append(id, rhs.id).append(lastDividend, rhs.lastDividend).append(symbol, rhs.symbol).append(tickerPrice, rhs.tickerPrice).isEquals();
     }
     
     public int CommonStockEntity.hashCode() {
-        return new HashCodeBuilder().append(id).append(lastDividend).append(symbol).append(tickerPrice).append(type).toHashCode();
+        return new HashCodeBuilder().append(id).append(lastDividend).append(symbol).append(tickerPrice).toHashCode();
     }
     
 }

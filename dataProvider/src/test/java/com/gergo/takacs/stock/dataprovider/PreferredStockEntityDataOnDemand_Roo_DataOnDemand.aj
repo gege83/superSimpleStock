@@ -33,7 +33,6 @@ privileged aspect PreferredStockEntityDataOnDemand_Roo_DataOnDemand {
         setParValue(obj, index);
         setSymbol(obj, index);
         setTickerPrice(obj, index);
-        setType(obj, index);
         return obj;
     }
     
@@ -54,11 +53,6 @@ privileged aspect PreferredStockEntityDataOnDemand_Roo_DataOnDemand {
     public void PreferredStockEntityDataOnDemand.setTickerPrice(PreferredStockEntity obj, int index) {
         double tickerPrice = new Integer(index).doubleValue();
         obj.setTickerPrice(tickerPrice);
-    }
-    
-    public void PreferredStockEntityDataOnDemand.setType(PreferredStockEntity obj, int index) {
-        StockType type = StockType.class.getEnumConstants()[0];
-        obj.setType(type);
     }
     
     public PreferredStockEntity PreferredStockEntityDataOnDemand.getSpecificPreferredStockEntity(int index) {

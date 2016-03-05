@@ -22,14 +22,5 @@ privileged aspect StockEntity_Roo_JavaBean {
     
     public void StockEntity.setTickerPrice(double tickerPrice) {
         this.tickerPrice = tickerPrice;
-    }
-    
-    public StockType StockEntity.getType() {
-        return this.type;
-    }
-    
-    public void StockEntity.setType(StockType type) {
-        this.type = type;
-    }
-    
+    }   
 }
