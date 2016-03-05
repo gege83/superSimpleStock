@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.gergo.takacs</groupId>
-		<artifactId>supersimplestock</artifactId>
+		<artifactId>SuperSimpleStock</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>TradeInterface</artifactId>
