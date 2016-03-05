@@ -4,8 +4,8 @@
 package com.gergo.takacs.stock.dataprovider;
 
 import com.gergo.takacs.stock.StockType;
-import com.gergo.takacs.stock.dataprovider.CommonStockEntity;
-import com.gergo.takacs.stock.dataprovider.CommonStockEntityDataOnDemand;
+import com.gergo.takacs.stock.dataprovider.PreferredStockEntity;
+import com.gergo.takacs.stock.dataprovider.PreferredStockEntityDataOnDemand;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,47 +16,52 @@ import javax.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-privileged aspect CommonStockEntityDataOnDemand_Roo_DataOnDemand {
+privileged aspect PreferredStockEntityDataOnDemand_Roo_DataOnDemand {
     
-    declare @type: CommonStockEntityDataOnDemand: @Component;
+    declare @type: PreferredStockEntityDataOnDemand: @Component;
     
-    private Random CommonStockEntityDataOnDemand.rnd = new SecureRandom();
+    private Random PreferredStockEntityDataOnDemand.rnd = new SecureRandom();
     
-    private List<CommonStockEntity> CommonStockEntityDataOnDemand.data;
+    private List<PreferredStockEntity> PreferredStockEntityDataOnDemand.data;
     
     @Autowired
-    StockRepository CommonStockEntityDataOnDemand.stockRepository;
+    StockRepository PreferredStockEntityDataOnDemand.stockRepository;
     
-    public CommonStockEntity CommonStockEntityDataOnDemand.getNewTransientCommonStockEntity(int index) {
-        CommonStockEntity obj = new CommonStockEntity();
-        setLastDividend(obj, index);
+    public PreferredStockEntity PreferredStockEntityDataOnDemand.getNewTransientPreferredStockEntity(int index) {
+        PreferredStockEntity obj = new PreferredStockEntity();
+        setFixedDividend(obj, index);
+        setParValue(obj, index);
         setSymbol(obj, index);
         setTickerPrice(obj, index);
         setType(obj, index);
         return obj;
     }
     
-    public void CommonStockEntityDataOnDemand.setLastDividend(CommonStockEntity obj, int index) {
-        double lastDividend = new Integer(index).doubleValue();
-        obj.setLastDividend(lastDividend);
+    public void PreferredStockEntityDataOnDemand.setFixedDividend(PreferredStockEntity obj, int index) {
+        float fixedDividend = new Integer(index).floatValue();
+        obj.setFixedDividend(fixedDividend);
+    }
+    public void PreferredStockEntityDataOnDemand.setParValue(PreferredStockEntity obj, int index) {
+    	double parValue = new Integer(index).doubleValue();
+    	obj.setParValue(parValue);
     }
     
-    public void CommonStockEntityDataOnDemand.setSymbol(CommonStockEntity obj, int index) {
+    public void PreferredStockEntityDataOnDemand.setSymbol(PreferredStockEntity obj, int index) {
         String symbol = "symbol_" + index;
         obj.setSymbol(symbol);
     }
     
-    public void CommonStockEntityDataOnDemand.setTickerPrice(CommonStockEntity obj, int index) {
+    public void PreferredStockEntityDataOnDemand.setTickerPrice(PreferredStockEntity obj, int index) {
         double tickerPrice = new Integer(index).doubleValue();
         obj.setTickerPrice(tickerPrice);
     }
     
-    public void CommonStockEntityDataOnDemand.setType(CommonStockEntity obj, int index) {
+    public void PreferredStockEntityDataOnDemand.setType(PreferredStockEntity obj, int index) {
         StockType type = StockType.class.getEnumConstants()[0];
         obj.setType(type);
     }
     
-    public CommonStockEntity CommonStockEntityDataOnDemand.getSpecificCommonStockEntity(int index) {
+    public PreferredStockEntity PreferredStockEntityDataOnDemand.getSpecificPreferredStockEntity(int index) {
         init();
         if (index < 0) {
             index = 0;
@@ -64,36 +69,36 @@ privileged aspect CommonStockEntityDataOnDemand_Roo_DataOnDemand {
         if (index > (data.size() - 1)) {
             index = data.size() - 1;
         }
-        CommonStockEntity obj = data.get(index);
+        PreferredStockEntity obj = data.get(index);
         Long id = obj.getId();
-        return (CommonStockEntity) stockRepository.findOne(id);
+        return (PreferredStockEntity) stockRepository.findOne(id);
     }
     
-    public CommonStockEntity CommonStockEntityDataOnDemand.getRandomCommonStockEntity() {
+    public PreferredStockEntity PreferredStockEntityDataOnDemand.getRandomPreferredStockEntity() {
         init();
-        CommonStockEntity obj = data.get(rnd.nextInt(data.size()));
+        PreferredStockEntity obj = data.get(rnd.nextInt(data.size()));
         Long id = obj.getId();
-        return (CommonStockEntity) stockRepository.findOne(id);
+        return (PreferredStockEntity) stockRepository.findOne(id);
     }
     
-    public boolean CommonStockEntityDataOnDemand.modifyCommonStockEntity(CommonStockEntity obj) {
+    public boolean PreferredStockEntityDataOnDemand.modifyPreferredStockEntity(PreferredStockEntity obj) {
         return false;
     }
     
-    public void CommonStockEntityDataOnDemand.init() {
+    public void PreferredStockEntityDataOnDemand.init() {
         int from = 0;
         int to = 10;
         List<StockEntity> stockData = stockRepository.findAll(new org.springframework.data.domain.PageRequest(from / to, to)).getContent();
         if (stockData == null) {
-            throw new IllegalStateException("Find entries implementation for 'CommonStockEntity' illegally returned null");
+            throw new IllegalStateException("Find entries implementation for 'PreferredStockEntity' illegally returned null");
         }
         if (!stockData.isEmpty()) {
             return;
         }
         
-        data = new ArrayList<CommonStockEntity>();
+        data = new ArrayList<PreferredStockEntity>();
         for (int i = 0; i < 10; i++) {
-            CommonStockEntity obj = getNewTransientCommonStockEntity(i);
+            PreferredStockEntity obj = getNewTransientPreferredStockEntity(i);
             try {
                 stockRepository.save(obj);
             } catch (final ConstraintViolationException e) {
