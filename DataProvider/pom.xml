@@ -6,11 +6,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.gergo.takacs.dataprovider</groupId>
-	<artifactId>dataProvider</artifactId>
+	<artifactId>DataProvider</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.0.BUILD-SNAPSHOT</version>
-	<name>dataProvider</name>
+	<name>DataProvider</name>
 	<properties>
 		<aspectj.version>1.8.1</aspectj.version>
 		<java.version>7</java.version>

@@ -11,15 +11,12 @@
 		<module>TradeInterface</module>
 		<module>StockInterface</module>
 		<module>StockCalculatorInterface</module>
-		<module>dataProvider</module>
+		<module>StockCalculator</module>
+		<module>DataProvider</module>
 	</modules>
 	<properties>
-		<aspectj.version>1.8.1</aspectj.version>
 		<java.version>1.7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<roo.version>1.3.2.RELEASE</roo.version>
-		<slf4j.version>1.7.12</slf4j.version>
-		<spring.version>4.1.4.RELEASE</spring.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -64,4 +61,20 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
