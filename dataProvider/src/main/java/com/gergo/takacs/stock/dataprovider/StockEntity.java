@@ -1,6 +1,11 @@
 package com.gergo.takacs.stock.dataprovider;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Enumerated;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
@@ -15,6 +20,9 @@ import com.gergo.takacs.stock.StockType;
 @RooToString
 @RooJpaEntity
 @RooEquals
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "symbol" }))
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "CLASS_TYPE")
 public abstract class StockEntity {
 
 	/**
