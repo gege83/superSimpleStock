@@ -7,11 +7,11 @@ import com.gergo.takacs.stock.dataprovider.PreferredStockEntity;
 
 privileged aspect PreferredStockEntity_Roo_JavaBean {
     
-    public float PreferredStockEntity.getFixedDividend() {
+    public double PreferredStockEntity.getFixedDividend() {
         return this.fixedDividend;
     }
     
-    public void PreferredStockEntity.setFixedDividend(float fixedDividend) {
+    public void PreferredStockEntity.setFixedDividend(double fixedDividend) {
         this.fixedDividend = fixedDividend;
     }
     

@@ -31,6 +31,10 @@ privileged aspect StockEntityServiceImpl_Roo_Service {
     public StockEntity StockEntityServiceImpl.findStockEntity(Long id) {
         return stockRepository.findOne(id);
     }
+
+    public StockEntity StockEntityServiceImpl.findOneBySymbol(String symbol) {
+    	return stockRepository.findOneBySymbol(symbol);
+    }
     
     public List<StockEntity> StockEntityServiceImpl.findAllStockEntitys() {
         return stockRepository.findAll();

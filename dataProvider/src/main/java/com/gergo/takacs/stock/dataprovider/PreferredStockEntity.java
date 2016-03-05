@@ -13,7 +13,7 @@ public class PreferredStockEntity extends StockEntity {
 
 	/**
 	 */
-	private float fixedDividend;
+	private double fixedDividend;
 
 	/**
 	 */
