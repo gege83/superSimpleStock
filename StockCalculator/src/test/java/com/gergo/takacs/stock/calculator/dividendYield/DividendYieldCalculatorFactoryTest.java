@@ -5,8 +5,6 @@ import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 
-import javax.transaction.NotSupportedException;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,8 +56,8 @@ public class DividendYieldCalculatorFactoryTest {
 		assertEquals(commonDividendYieldCalculator, actual);
 	}
 
-	@Test(expected = NotSupportedException.class)
-	public void testGetCalculatorIfStockIsNotSupported() throws Exception {
+	@Test(expected = IllegalArgumentException.class)
+	public void testGetCalculatorIfStockIsNotSupported() {
 		// given
 		Stock stock = new Stock() {
 			@Override

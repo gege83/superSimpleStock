@@ -13,6 +13,8 @@
 		<module>StockCalculatorInterface</module>
 		<module>StockCalculator</module>
 		<module>DataProvider</module>
+		<module>StockServiceIntreface</module>
+		<module>StockService</module>
 	</modules>
 	<properties>
 		<java.version>1.7</java.version>

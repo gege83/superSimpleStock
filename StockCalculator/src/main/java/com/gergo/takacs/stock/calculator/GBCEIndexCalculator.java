@@ -7,18 +7,19 @@ import org.apache.commons.math3.stat.StatUtils;
 public class GBCEIndexCalculator implements IndexCalculator {
 
 	@Override
-	public double calculate(List<Double> stockPrices) {
-		if (stockPrices.isEmpty()) {
+	public double calculate(List<StockInformation> stockInformation) {
+		if (stockInformation.isEmpty()) {
 			throw new IllegalArgumentException("No stock price presented.");
 		}
-		double[] prices = convertToArray(stockPrices);
+		double[] prices = convertToArray(stockInformation);
 		return StatUtils.geometricMean(prices);
 	}
 
-	private double[] convertToArray(List<Double> stockPrices) {
-		double[] result = new double[stockPrices.size()];
-		for (int index = 0; index < stockPrices.size(); index++) {
-			result[index] = stockPrices.get(index);
+	private double[] convertToArray(List<StockInformation> stockInformation) {
+		double[] result = new double[stockInformation.size()];
+		for (int index = 0; index < stockInformation.size(); index++) {
+			StockInformation currentStockInformation = stockInformation.get(index);
+			result[index] = currentStockInformation.getStockPrice();
 		}
 		return result;
 	}
