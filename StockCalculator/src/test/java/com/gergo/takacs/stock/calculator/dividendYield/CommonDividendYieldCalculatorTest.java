@@ -8,12 +8,12 @@ import com.gergo.takacs.stock.Stock;
 import com.gergo.takacs.stock.UnmutableCommonStock;
 import com.gergo.takacs.stock.calculator.DividendYieldCalculator;
 
-public class CommonStockDividendYieldCalculatorTest {
+public class CommonDividendYieldCalculatorTest {
 
 	@Test
 	public void testCalculate() throws Exception {
-		// givne
-		DividendYieldCalculator underTest = new CommonStockDividendYieldCalculator();
+		// given
+		DividendYieldCalculator underTest = new CommonDividendYieldCalculator();
 		Stock commonStock = new UnmutableCommonStock("stock", 1., 2.);
 		double expected = 2.;
 		// when

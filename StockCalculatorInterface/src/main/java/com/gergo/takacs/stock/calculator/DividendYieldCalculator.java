@@ -4,4 +4,6 @@ import com.gergo.takacs.stock.Stock;
 
 public interface DividendYieldCalculator {
 	double calculate(Stock stock);
+
+	Class<? extends Stock> getStockType();
 }

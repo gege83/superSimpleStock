@@ -22,6 +22,7 @@ public class StockEntityConverterFactory {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public <S extends StockEntity> StockEntityConverter<S> getConverter(Class<S> sourceType) {
 		return (StockEntityConverter<S>) converterMap.get(sourceType);
 	}
