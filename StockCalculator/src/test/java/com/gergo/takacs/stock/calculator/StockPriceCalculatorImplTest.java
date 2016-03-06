@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.List;
 
-import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,9 +33,9 @@ public class StockPriceCalculatorImplTest {
 	@Test
 	public void testCalculateIfTrades() throws Exception {
 		// given
-		Trade trade1 = new UnmutableTrade(new DateTime(), "symbol", TradeDirection.BUY, 2, 2.);
-		Trade trade2 = new UnmutableTrade(new DateTime(), "symbol", TradeDirection.SELL, 20, 21.);
-		Trade trade3 = new UnmutableTrade(new DateTime(), "symbol", TradeDirection.BUY, 10, 2.);
+		Trade trade1 = new UnmutableTrade("symbol", TradeDirection.BUY, 2, 2.);
+		Trade trade2 = new UnmutableTrade("symbol", TradeDirection.SELL, 20, 21.);
+		Trade trade3 = new UnmutableTrade("symbol", TradeDirection.BUY, 10, 2.);
 		List<Trade> trades = Arrays.asList(trade1, trade2, trade3);
 		double expected = 13.875;
 		// when

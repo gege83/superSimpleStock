@@ -10,11 +10,7 @@ import com.gergo.takacs.trade.dataprovider.TradeEntity;
 @Component
 public class TradeConverter {
 	public Trade convert(TradeEntity source) {
-		DateTime creationTime = null;
-		if (source.getCreationDate() != null) {
-			creationTime = new DateTime(source.getCreationDate());
-		}
-		return new UnmutableTrade(creationTime, source.getStockSymbol(), source.getDirection(), source.getQuantity(),
+		return new UnmutableTrade(source.getStockSymbol(), source.getDirection(), source.getQuantity(),
 				source.getPrice());
 	}
 
@@ -29,7 +25,7 @@ public class TradeConverter {
 	}
 
 	private Date getCreationDate(Trade source) {
-		DateTime creationTime = source.getCreationTime();
+		DateTime creationTime = new DateTime();
 		Date currentTime = null;
 		if (creationTime != null) {
 			currentTime = creationTime.toDate();
