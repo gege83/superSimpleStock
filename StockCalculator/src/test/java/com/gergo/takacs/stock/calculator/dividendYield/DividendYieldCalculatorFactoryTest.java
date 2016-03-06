@@ -5,14 +5,18 @@ import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 
+import javax.transaction.NotSupportedException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.gergo.takacs.stock.CommonStock;
 import com.gergo.takacs.stock.PreferredStock;
 import com.gergo.takacs.stock.Stock;
+import com.gergo.takacs.stock.UnmutableCommonStock;
 import com.gergo.takacs.stock.UnmutablePreferredStock;
 import com.gergo.takacs.stock.calculator.DividendYieldCalculator;
 
@@ -29,6 +33,7 @@ public class DividendYieldCalculatorFactoryTest {
 	@Before
 	public void setup() {
 		when(preferredDividendYieldCalculator.getStockType()).thenReturn(PreferredStock.class);
+		when(commonDividendYieldCalculator.getStockType()).thenReturn(CommonStock.class);
 		underTest = new DividendYieldCalculatorFactory(Arrays
 				.<DividendYieldCalculator> asList(preferredDividendYieldCalculator, commonDividendYieldCalculator));
 	}
@@ -41,5 +46,34 @@ public class DividendYieldCalculatorFactoryTest {
 		DividendYieldCalculator actual = underTest.getCalculator(stock);
 		// then
 		assertEquals(preferredDividendYieldCalculator, actual);
+	}
+
+	@Test
+	public void testGetCalculatorIfStockIsCommmon() throws Exception {
+		// given
+		Stock stock = new UnmutableCommonStock("stock", 2., 3.);
+		// when
+		DividendYieldCalculator actual = underTest.getCalculator(stock);
+		// then
+		assertEquals(commonDividendYieldCalculator, actual);
+	}
+
+	@Test(expected = NotSupportedException.class)
+	public void testGetCalculatorIfStockIsNotSupported() throws Exception {
+		// given
+		Stock stock = new Stock() {
+			@Override
+			public double getTickerPrice() {
+				return 2;
+			}
+
+			@Override
+			public String getStockSymbol() {
+				return "s";
+			}
+		};
+		// when
+		underTest.getCalculator(stock);
+		// then exception
 	}
 }
