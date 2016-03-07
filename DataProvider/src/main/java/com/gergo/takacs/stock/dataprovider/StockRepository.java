@@ -1,8 +1,10 @@
 package com.gergo.takacs.stock.dataprovider;
 
-import org.springframework.roo.addon.layers.repository.jpa.RooJpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
 
-@RooJpaRepository(domainType = StockEntity.class)
-public interface StockRepository {
+@Repository
+public interface StockRepository extends JpaRepository<StockEntity, Long>, JpaSpecificationExecutor<StockEntity> {
 	StockEntity findOneBySymbol(String symbol);
 }
