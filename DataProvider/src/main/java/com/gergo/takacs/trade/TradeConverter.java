@@ -26,10 +26,7 @@ public class TradeConverter {
 
 	private Date getCreationDate(Trade source) {
 		DateTime creationTime = new DateTime();
-		Date currentTime = null;
-		if (creationTime != null) {
-			currentTime = creationTime.toDate();
-		}
+		Date currentTime = creationTime.toDate();
 		return currentTime;
 	}
 

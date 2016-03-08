@@ -13,6 +13,7 @@
 		<module>StockCalculatorInterface</module>
 		<module>StockCalculator</module>
 		<module>DataProvider</module>
+		<module>DataChache</module>
 		<module>StockServiceIntreface</module>
 		<module>StockService</module>
 	</modules>
