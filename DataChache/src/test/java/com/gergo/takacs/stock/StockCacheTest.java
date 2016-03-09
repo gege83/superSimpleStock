@@ -14,25 +14,21 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.gergo.takacs.stock.Stock;
-import com.gergo.takacs.stock.StockCache;
-import com.gergo.takacs.stock.StockNotFoundException;
-
 @RunWith(MockitoJUnitRunner.class)
 public class StockCacheTest {
 
 	private static final String STOCK1 = "stock1";
 	private static final String STOCK2 = "stock2";
 	@Mock
-	private Stock stock1;
+	private CachedStock stock1;
 	@Mock
-	private Stock stock2;
+	private CachedStock stock2;
 
 	private StockCache underTest;
 
 	@Before
 	public void setUp() throws Exception {
-		List<Stock> initialStocks = Arrays.asList(stock1, stock2);
+		List<CachedStock> initialStocks = Arrays.asList(stock1, stock2);
 		when(stock1.getStockSymbol()).thenReturn(STOCK1);
 		when(stock2.getStockSymbol()).thenReturn(STOCK2);
 		underTest = new StockCache(initialStocks);

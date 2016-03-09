@@ -5,24 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.gergo.takacs.stock.Stock;
-import com.gergo.takacs.stock.StockNotFoundException;
-import com.gergo.takacs.stock.StockService;
-
 public class StockCache implements StockService {
 
-	private final Map<String, Stock> cachedStocks;
+	private final Map<String, CachedStock> cachedStocks;
 
-	public StockCache(List<Stock> initialStocks) {
+	public StockCache(List<CachedStock> initialStocks) {
 		cachedStocks = new HashMap<>();
-		for (Stock stock : initialStocks) {
+		for (CachedStock stock : initialStocks) {
 			cachedStocks.put(stock.getStockSymbol(), stock);
 		}
 	}
 
 	@Override
-	public Stock findStockBySymbol(String symbol) {
-		Stock stock = cachedStocks.get(symbol);
+	public CachedStock findStockBySymbol(String symbol) {
+		CachedStock stock = cachedStocks.get(symbol);
 		if (stock != null) {
 			return stock;
 		}
