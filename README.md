@@ -5,11 +5,13 @@ Super simple stocks is an application to manage trades on a set of stocks and it
 ## How to run: ##
 Build the application with maven: mvn install
 run app:
+
 * cd RestApi
 * mvn spring-boot:run
 
 Application will start on http://localhost:8080
 example urls:
+
 * add trade: http://localhost:8080/addTrade?stockSymbol=GIN&tradeDirection=BUY&price=12&quantity=2
 * get stock information for a given stock: http://localhost:8080/calculateStockInformation?stockSymbol=GIN
 * get stock index information: http://localhost:8080/calculateStockIndexInformation
@@ -18,6 +20,7 @@ Supported stockSymbols and related values can be found in the exercise document.
 
 ## A few words about the project in this application ##
 The main design principle was that create code which is flexible any part can be replaced easily. For this interfaces and implementations has been placed in separate projects. By proof of concept DataCache and DataProvider has been created.
+
 The project is flexible enough to implement new stock types.
 
 The Rest API project can be build with DataCache and DataProvider project as well. (DataProvider can be enabled with dbProfile no Stock will be initialized)
