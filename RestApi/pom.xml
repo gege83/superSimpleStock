@@ -52,7 +52,7 @@
 		</dependency>
 		<dependency>
 					<groupId>${project.groupId}</groupId>
-					<artifactId>DataChache</artifactId>
+					<artifactId>DataCache</artifactId>
 					<version>${project.version}</version>
 				</dependency>
 		<dependency>
