@@ -1,13 +1,13 @@
 package com.gergo.takacs.stock.converter;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.gergo.takacs.stock.Stock;
 import com.gergo.takacs.stock.UnmutableCommonStock;
 import com.gergo.takacs.stock.dataprovider.CommonStockEntity;
 import com.gergo.takacs.stock.dataprovider.StockEntity;
 
-@Service
+@Component
 public class CommonStockEntryToCommonStock implements StockEntityConverter<CommonStockEntity> {
 
 	@Override

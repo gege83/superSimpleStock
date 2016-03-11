@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	profile="cache">
+	<!-- Data Cache -->
+		<bean id="stockService" class="com.gergo.takacs.stock.StockCache">
+		<constructor-arg type="java.util.List">
+			<list>
+				<bean class="com.gergo.takacs.stock.CachedCommonStock">
+					<constructor-arg value="TEA" />
+					<constructor-arg value="0" />
+				</bean>
+				<bean class="com.gergo.takacs.stock.CachedCommonStock">
+					<constructor-arg value="POP" />
+					<constructor-arg value="8" />
+				</bean>
+				<bean class="com.gergo.takacs.stock.CachedCommonStock">
+					<constructor-arg value="ALE" />
+					<constructor-arg value="23" />
+				</bean>
+				<bean class="com.gergo.takacs.stock.CachedPreferredStock">
+					<constructor-arg value="GIN" />
+					<constructor-arg name="fixedDividedend" value="0.02" />
+					<constructor-arg name="parValue" value="100" />
+				</bean>
+				<bean class="com.gergo.takacs.stock.CachedCommonStock">
+					<constructor-arg value="JOE" />
+					<constructor-arg value="13" />
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="tradeService" class="com.gergo.takacs.trade.TradeCache">
+		<constructor-arg ref="stockService" />
+	</bean>
+</beans>

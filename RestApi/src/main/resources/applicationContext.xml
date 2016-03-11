@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Stock Calculator -->
+	<bean id="dividendYieldCalculatorFactory"
+		class="com.gergo.takacs.stock.calculator.dividendYield.DividendYieldCalculatorFactory">
+		<constructor-arg>
+			<list>
+				<bean
+					class="com.gergo.takacs.stock.calculator.dividendYield.CommonDividendYieldCalculator" />
+				<bean
+					class="com.gergo.takacs.stock.calculator.dividendYield.PreferredDividendYieldCalculator" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="stockPriceCalculator"
+		class="com.gergo.takacs.stock.calculator.StockPriceCalculatorImpl" />
+	<bean id="peRatioCalculator" class="com.gergo.takacs.stock.calculator.PERatioCalculatorImpl" />
+	<bean id="stockInformationCalculator"
+		class="com.gergo.takacs.stock.calculator.SimpleStockInformationCalculator">
+		<constructor-arg ref="dividendYieldCalculatorFactory" />
+		<constructor-arg ref="peRatioCalculator" />
+		<constructor-arg ref="stockPriceCalculator" />
+		<constructor-arg ref="tradeService" />
+		<constructor-arg name="timeRange" value="15" />
+	</bean>
+	<!-- Stock Service -->
+	<bean id="indexCalculator" class="com.gergo.takacs.stock.calculator.GBCEIndexCalculator" />
+	<bean class="com.gergo.takacs.stock.service.SimpleStockServiceFacade">
+		<constructor-arg ref="indexCalculator" />
+		<constructor-arg ref="stockInformationCalculator" />
+		<constructor-arg ref="stockService" />
+		<constructor-arg ref="tradeService" />
+	</bean>
+</beans>

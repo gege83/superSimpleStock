@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.gergo.takacs.stock.dataprovider.StockEntity;
 
-@Service
+@Component
 public class StockEntityConverterFactory {
 
-	private Map<Class<? extends StockEntity>, StockEntityConverter<? extends StockEntity>> converterMap;
+	private final Map<Class<? extends StockEntity>, StockEntityConverter<? extends StockEntity>> converterMap;
 
 	@Autowired
 	public StockEntityConverterFactory(List<StockEntityConverter<? extends StockEntity>> converterList) {
-		this.converterMap = new HashMap<>();
+		converterMap = new HashMap<>();
 		for (StockEntityConverter<? extends StockEntity> stockEntityConverter : converterList) {
 			converterMap.put(stockEntityConverter.getSourceClass(), stockEntityConverter);
 		}

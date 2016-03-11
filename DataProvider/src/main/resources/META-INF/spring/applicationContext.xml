@@ -13,9 +13,8 @@
     
     <context:spring-configured/>
     
-    <context:component-scan base-package="com.gergo.takacs">
-        <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
-    </context:component-scan>
+    <context:component-scan base-package="com.gergo.takacs.stock"/>
+    <context:component-scan base-package="com.gergo.takacs.trade"/>
     <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
         <property name="driverClassName" value="${database.driverClassName}"/>
         <property name="url" value="${database.url}"/>

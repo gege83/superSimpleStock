@@ -3,16 +3,21 @@ package com.gergo.takacs.stock;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.gergo.takacs.stock.converter.StockEntityConverter;
 import com.gergo.takacs.stock.converter.StockEntityConverterFactory;
 import com.gergo.takacs.stock.dataprovider.StockEntity;
 import com.gergo.takacs.stock.dataprovider.StockEntityService;
 
+@Component
 public class StockServiceAdapter implements StockService {
 
-	private StockEntityService stockService;
-	private StockEntityConverterFactory converterFactory;
+	private final StockEntityService stockService;
+	private final StockEntityConverterFactory converterFactory;
 
+	@Autowired
 	public StockServiceAdapter(StockEntityService stockService, StockEntityConverterFactory converterFactory) {
 		this.stockService = stockService;
 		this.converterFactory = converterFactory;
